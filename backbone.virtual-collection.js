@@ -13,7 +13,7 @@
 var VirtualCollection = Backbone.VirtualCollection = Backbone.Collection.extend({
 
   constructor: function (collection, options) {
-    this.options = options || {};
+    options = (this.options = options || {});
     this.collection = collection;
 
     if (options.comparator !== undefined) this.comparator = options.comparator;
@@ -46,9 +46,8 @@ var VirtualCollection = Backbone.VirtualCollection = Backbone.Collection.extend(
     return this;
   },
 
-  // Override clone to behaviour similar to Backbone.Collection.clone
   clone: function () {
-  	return this.constructor(this.collection, this.options);
+    return new this.constructor(this.collection, this.options);
   }
 
   _rebuildIndex: function () {

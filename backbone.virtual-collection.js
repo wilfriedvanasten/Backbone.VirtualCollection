@@ -13,7 +13,7 @@
 var VirtualCollection = Backbone.VirtualCollection = Backbone.Collection.extend({
 
   constructor: function (collection, options) {
-    options = (this.options = options || {});
+    this.options = options = _.extend({}, options);
     this.collection = collection;
 
     if (options.comparator !== undefined) this.comparator = options.comparator;
